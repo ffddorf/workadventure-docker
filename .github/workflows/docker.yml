@@ -1,0 +1,14 @@
+name: Docker
+on:
+  push:
+
+env:
+  DOCKER_BUILDKIT: "1"
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Build backend
+        run: docker build . --target back -t ffddorf/workadventure-back
