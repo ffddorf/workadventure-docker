@@ -13,5 +13,5 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Build backend
-        run: docker build . --target back -t ffddorf/workadventure-back
+      - name: Build Docker images
+        run: ./build.sh
