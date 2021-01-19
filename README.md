@@ -5,10 +5,11 @@ This contains configuration to build very opinionated Docker images for the soft
 ## Building locally
 
 ```sh
-export DOCKER_BUILDKIT=1
-docker build . --target <target>
+./build.sh
 ```
 
-These targets are available:
-- `back` - the backend service
-- _more to come..._
+These images are being built:
+- `ffddorf/workadventure-back` - backend logic
+- `ffddorf/workadventure-pusher` - handles websockets
+- `ffddorf/workadventure-uploader` - service for uploading files
+- `ffddorf/workadventure-front` - frontend webapp, served via nginx
