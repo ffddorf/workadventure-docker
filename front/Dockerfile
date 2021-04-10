@@ -1,4 +1,4 @@
-FROM ffddorf/workadventure-proto AS builder
+FROM workadventure-proto AS builder
 
 WORKDIR /src/workadventure/front
 RUN yarn install --frozen-lockfile

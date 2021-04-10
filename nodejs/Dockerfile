@@ -1,7 +1,9 @@
 ARG NODEJS_VERSION=14.15
 ARG BASE_LAYER=base
 
-FROM ffddorf/workadventure-${BASE_LAYER} AS builder
+FROM workadventure-base AS base
+
+FROM workadventure-${BASE_LAYER} AS builder
 ARG SERVICE
 WORKDIR /src/workadventure/${SERVICE}
 ENV NODE_ENV=development
@@ -12,7 +14,7 @@ FROM node:${NODEJS_VERSION}-slim
 ARG SERVICE
 
 WORKDIR /app
-COPY --from=ffddorf/workadventure-base /src/workadventure/${SERVICE}/package.json /src/workadventure/${SERVICE}/yarn.lock /app/
+COPY --from=base /src/workadventure/${SERVICE}/package.json /src/workadventure/${SERVICE}/yarn.lock /app/
 
 ENV NODE_ENV=production
 RUN yarn install --production --frozen-lockfile
